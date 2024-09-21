@@ -1,0 +1,19 @@
+add Paper 370,5 555-4823 72 210 297
+add Pencil 15 555-3485 4 Non-colored
+add Pen 20 555-2106 Ballpoint 2
+add Pencil 15,55 555-3485 2 Red
+add Pen 20 555-2106 Gel 2
+add Paper 300 555-4823 80 210 297
+add Pencil 15 555-3485 4 Orange
+add Pencil 15 555-3485 1 Yellow
+add Pencil 15 555-3485 5 Blue
+add Pencil 15 555-3485 5 Green
+add Pencil 15 555-3485 7 Pink
+add Pencil 15 555-3485 2 Brown
+add Pencil 15 555-3485 3 Black
+add Pencil 15 555-3485 4 White
+add Pencil 15,75 555-3485 5 Purple
+print
+rem 1
+print
+exit
