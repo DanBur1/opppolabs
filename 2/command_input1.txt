@@ -1,0 +1,12 @@
+add Pencil 15,5 555-1255 4 Red
+add Pencil 15,5 555-1255 4 red
+add pencil 15,5 555-1255 4 Red
+add pencil 15,5 555-1255 4 red
+add pEnCiL 15,5 555-1255 4 rEd
+add Pen 20,5 555-1255 Ballpoint 4
+add pen 20,5 555-1255 Ballpoint 4
+add Pen 20,5 555-1255 ballpoint 4
+add pEn 20,5 555-1255 bAlLpOiNt 4
+add Paper 355,5 555-1454 70 210 297
+add pApEr 355,5 555-1454 70 210 297
+exit
