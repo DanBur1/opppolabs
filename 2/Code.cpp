@@ -1,4 +1,5 @@
-﻿#include <fstream>
+﻿/*COPYRIGHT TEMPLATE NO REAL COPYRIGHT HERE*/
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <stdexcept>
@@ -111,8 +112,8 @@ void processCommand(string command) {
       parameters[j][i] = tolower(parameters[j][i]);
     }
   switch (commandMap[parameters[0]]) {
-  case 1: // add
-  {
+    // add
+  case 1: {
     if (parameters.size() < 3) {
       cout << "Не указаны параметры" << endl;
       return;
@@ -191,7 +192,8 @@ void processCommand(string command) {
     }
     break;
   }
-  case 2: { // rem
+  // rem
+  case 2: {
     int id;
     try {
       id = stoi(parameters[1]);
@@ -209,8 +211,8 @@ void processCommand(string command) {
     supplies.erase(supplies.begin() + id);
     break;
   }
-  case 3: // print
-  {
+  // print
+  case 3: {
     cout << "Вывод:" << endl;
     for (int i = 0; i < supplies.size(); i++) {
       displayInfo(supplies[i]);
@@ -218,8 +220,8 @@ void processCommand(string command) {
     cout << endl;
     break;
   }
-  case 4: // help
-  {
+  // help
+  case 4: {
     cout << "Редактор списка канцелярских принадлежностей." << endl
          << "Используются 4 комманды: add (Добавить), rem (Удалить), print "
             "(Вывести), exit (Выход)."
