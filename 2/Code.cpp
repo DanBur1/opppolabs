@@ -112,7 +112,7 @@ void processCommand(string command) {
       parameters[j][i] = tolower(parameters[j][i]);
     }
   switch (commandMap[parameters[0]]) {
-  case 1:  // add
+  case 1: //  add
   {
     if (parameters.size() < 3) {
       cout << "Не указаны параметры" << endl;
@@ -192,7 +192,7 @@ void processCommand(string command) {
     }
     break;
   }
-  case 2: {   // rem
+  case 2: { //  rem
     int id;
     try {
       id = stoi(parameters[1]);
@@ -210,7 +210,7 @@ void processCommand(string command) {
     supplies.erase(supplies.begin() + id);
     break;
   }
-  case 3:  // print
+  case 3: //  print
   {
     cout << "Вывод:" << endl;
     for (int i = 0; i < supplies.size(); i++) {
@@ -219,7 +219,7 @@ void processCommand(string command) {
     cout << endl;
     break;
   }
-  case 4: // help
+  case 4: //  help
   {
     cout << "Редактор списка канцелярских принадлежностей." << endl
          << "Используются 4 комманды: add (Добавить), rem (Удалить), print "
