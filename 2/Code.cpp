@@ -218,7 +218,7 @@ void processCommand(string command) {
     cout << endl;
     break;
   }
-  case 4: //  help
+  case 4: // help
   {
     cout << "Редактор списка канцелярских принадлежностей." << endl
          << "Используются 4 комманды: add (Добавить), rem (Удалить), print "
