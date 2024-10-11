@@ -6,15 +6,15 @@
 #include <string>
 #include <vector>
 
-using std::map;
-using std::string;
-using std::vector;
-using std::cout;
-using std::cin;
 using std::cerr;
+using std::cin;
+using std::cout;
 using std::endl;
 using std::ifstream;
 using std::invalid_argument;
+using std::map;
+using std::string;
+using std::vector;
 
 map<string, int> commandMap = {
     {"add", 1}, {"rem", 2}, {"print", 3}, {"help", 4}};
@@ -112,7 +112,7 @@ void processCommand(string command) {
       parameters[j][i] = tolower(parameters[j][i]);
     }
   switch (commandMap[parameters[0]]) {
-  case 1:  // add
+  case 1: // add
   {
     if (parameters.size() < 3) {
       cout << "Не указаны параметры" << endl;
@@ -139,7 +139,7 @@ void processCommand(string command) {
         cout << "Некорректная плотность: " << parameters[4] << endl;
         return;
       }
-      newSupply.attributes.push_back(to_string(param_density));
+      newSupply.attributes.push_back(std::to_string(param_density));
       newSupply.attributes.push_back(parameters[5]);
       supplies.push_back(newSupply);
       cout << "Добавлен ";
@@ -161,7 +161,7 @@ void processCommand(string command) {
         return;
       }
       newSupply.attributes.push_back(parameters[4]);
-      newSupply.attributes.push_back(to_string(param_diam));
+      newSupply.attributes.push_back(std::to_string(param_diam));
       supplies.push_back(newSupply);
       cout << "Добавлен ";
       displayInfo(newSupply);
@@ -180,9 +180,9 @@ void processCommand(string command) {
         cout << "Некорректные параметры бумаги." << endl;
         return;
       }
-      newSupply.attributes.push_back(to_string(param_density));
-      newSupply.attributes.push_back(to_string(param_width));
-      newSupply.attributes.push_back(to_string(param_length));
+      newSupply.attributes.push_back(std::to_string(param_density));
+      newSupply.attributes.push_back(std::to_string(param_width));
+      newSupply.attributes.push_back(std::to_string(param_length));
       supplies.push_back(newSupply);
       cout << "Добавлен ";
       displayInfo(newSupply);
@@ -192,7 +192,7 @@ void processCommand(string command) {
     }
     break;
   }
-  case 2: {  // rem
+  case 2: { // rem
     int id;
     try {
       id = stoi(parameters[1]);
@@ -210,7 +210,7 @@ void processCommand(string command) {
     supplies.erase(supplies.begin() + id);
     break;
   }
-  case 3:  // print
+  case 3: // print
   {
     cout << "Вывод:" << endl;
     for (int i = 0; i < supplies.size(); i++) {
@@ -219,7 +219,7 @@ void processCommand(string command) {
     cout << endl;
     break;
   }
-  case 4:  // help
+  case 4: // help
   {
     cout << "Редактор списка канцелярских принадлежностей." << endl
          << "Используются 4 комманды: add (Добавить), rem (Удалить), print "
