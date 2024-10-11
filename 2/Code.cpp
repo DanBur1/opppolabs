@@ -111,7 +111,7 @@ void processCommand(string command) {
       parameters[j][i] = tolower(parameters[j][i]);
     }
   switch (commandMap[parameters[0]]) {
-  case 1: //  add
+  case 1: // add
   {
     if (parameters.size() < 3) {
       cout << "Не указаны параметры" << endl;
