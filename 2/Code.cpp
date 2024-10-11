@@ -6,7 +6,15 @@
 #include <string>
 #include <vector>
 
-using namespace std;
+using std::map;
+using std::string;
+using std::vector;
+using std::cout;
+using std::cin;
+using std::cerr;
+using std::endl;
+using std::ifstream;
+using std::invalid_argument;
 
 map<string, int> commandMap = {
     {"add", 1}, {"rem", 2}, {"print", 3}, {"help", 4}};
