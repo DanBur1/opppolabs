@@ -1,5 +1,4 @@
-﻿/*Copyright [year] <Copyright Owner>*/
-#include <fstream>
+﻿#include <fstream>
 #include <iostream>
 #include <map>
 #include <stdexcept>
