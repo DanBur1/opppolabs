@@ -32,8 +32,10 @@ enum color {
 };
 enum penType { ball, gel };
 
-map<string, int> commandMap = {
-    {"add", 1}, {"rem", 2}, {"print", 3}, {"help", 4}};
+map<string, int> commandMap = {{"add", 1},
+                               {"rem", 2},
+                               {"print", 3},
+                               {"help", 4}};
 map<color, string> colorMap = {
     {red, "red"},     {orange, "orange"}, {yellow, "yellow"},
     {green, "green"}, {blue, "blue"},     {purple, "purple"},
@@ -48,7 +50,7 @@ class OfficeSupplies {
 
  public:
   OfficeSupplies() : price(0), phone_number("") {}
-  OfficeSupplies(float p, const string &phone)
+  OfficeSupplies(float p, const string& phone)
       : price(p), phone_number(phone) {}
   virtual void displayInfo() const {
     cout << "Цена: " << price << "руб. | Номер владельца: " << phone_number
@@ -61,7 +63,7 @@ class Pencil : public OfficeSupplies {
   color pencil_color;
 
  public:
-  Pencil(float p, const string &phone, int d, color pc)
+  Pencil(float p, const string& phone, int d, color pc)
       : OfficeSupplies(p, phone), density(d), pencil_color(pc) {}
   void displayInfo() const override {
     OfficeSupplies::displayInfo();
@@ -75,7 +77,7 @@ class Pen : public OfficeSupplies {
   float diam;
 
  public:
-  Pen(float p, const string &phone, const penType &t, float d)
+  Pen(float p, const string& phone, const penType& t, float d)
       : OfficeSupplies(p, phone), type(t), diam(d) {}
   void displayInfo() const override {
     OfficeSupplies::displayInfo();
@@ -90,7 +92,7 @@ class Paper : public OfficeSupplies {
   int length;
 
  public:
-  Paper(float p, const string &phone, int d, int w, int h)
+  Paper(float p, const string& phone, int d, int w, int h)
       : OfficeSupplies(p, phone), density(d), width(w), length(h) {}
 
   void displayInfo() const override {
@@ -100,7 +102,7 @@ class Paper : public OfficeSupplies {
   }
 };
 
-vector<OfficeSupplies *> supplies;
+vector<OfficeSupplies*> supplies;
 
 color stringToColor(string str);
 void processCommand(string command);
@@ -131,7 +133,8 @@ int main() {
           << "Введите название файла (/ConsoleApplication5/command_input.txt - "
              "по умолчанию)";
       getline(cin, filename);
-      if (filename.empty()) filename = "command_input.txt";
+      if (filename.empty())
+        filename = "command_input.txt";
       file.open(filename);
       if (!file.is_open()) {
         cerr << "Ошибка: не удалось открыть файл \"" << filename << "\""
@@ -156,7 +159,7 @@ int main() {
 }
 
 color stringToColor(string str) {
-  for (const auto &pair : colorMap)
+  for (const auto& pair : colorMap)
     if (pair.second == str) {
       return pair.first;
     }
@@ -178,7 +181,7 @@ void processCommand(string command) {
       parameters[j][i] = tolower(parameters[j][i]);
     }
   switch (commandMap[parameters[0]]) {
-    // add
+      // add
     case 1: {
       if (parameters.size() < 3) {
         cout << "Не указаны параметры" << endl;
@@ -187,7 +190,7 @@ void processCommand(string command) {
       float param_price;
       try {
         param_price = stof(parameters[2]);
-      } catch (invalid_argument &) {
+      } catch (invalid_argument&) {
         cout << "Некорректная цена: " << parameters[2] << endl;
         return;
       }
@@ -199,12 +202,12 @@ void processCommand(string command) {
         int param_density;
         try {
           param_density = stoi(parameters[4]);
-        } catch (invalid_argument &) {
+        } catch (invalid_argument&) {
           cout << "Некорректная плотность: " << parameters[4] << endl;
           return;
         }
         color param_color = (stringToColor(parameters[5]));
-        Pencil *sup =
+        Pencil* sup =
             new Pencil(param_price, parameters[3], param_density, param_color);
         supplies.push_back(sup);
         cout << "Добавлен ";
@@ -226,11 +229,11 @@ void processCommand(string command) {
         float param_diam;
         try {
           param_diam = stof(parameters[5]);
-        } catch (invalid_argument &) {
+        } catch (invalid_argument&) {
           cout << "Некорректный диаметр: " << parameters[5] << endl;
           return;
         }
-        Pen *sup = new Pen(param_price, parameters[3], param_type, param_diam);
+        Pen* sup = new Pen(param_price, parameters[3], param_type, param_diam);
         supplies.push_back(sup);
         cout << "Добавлен ";
         sup->displayInfo();
@@ -245,11 +248,11 @@ void processCommand(string command) {
           param_density = stoi(parameters[4]);
           param_width = stoi(parameters[5]);
           param_length = stoi(parameters[6]);
-        } catch (invalid_argument &) {
+        } catch (invalid_argument&) {
           cout << "Некорректные параметры бумаги." << endl;
           return;
         }
-        Paper *sup = new Paper(param_price, parameters[3], param_density,
+        Paper* sup = new Paper(param_price, parameters[3], param_density,
                                param_width, param_length);
         supplies.push_back(sup);
         cout << "Добавлен ";
@@ -260,12 +263,12 @@ void processCommand(string command) {
       }
       break;
     }
-    // rem
+      // rem
     case 2: {
       int id;
       try {
         id = stoi(parameters[1]);
-      } catch (invalid_argument &) {
+      } catch (invalid_argument&) {
         cout << "Некорректный ID: " << parameters[1] << endl;
         return;
       }
@@ -279,7 +282,7 @@ void processCommand(string command) {
       supplies.erase(supplies.begin() + id);
       break;
     }
-    // print
+      // print
     case 3: {
       cout << "Вывод:" << endl;
       for (int i = 0; i < supplies.size(); i++) {
@@ -288,7 +291,7 @@ void processCommand(string command) {
       cout << endl;
       break;
     }
-    // help
+      // help
     case 4: {
       cout << "Редактор списка канцелярских принадлежностей." << endl
            << "Используются 4 комманды: add (Добавить), rem (Удалить), print "
