@@ -192,7 +192,7 @@ void processCommand(string command) {
     }
     break;
   }
-  case 2: { //  rem
+  case 2: { // rem
     int id;
     try {
       id = stoi(parameters[1]);
@@ -210,7 +210,7 @@ void processCommand(string command) {
     supplies.erase(supplies.begin() + id);
     break;
   }
-  case 3: //  print
+  case 3: // print
   {
     cout << "Вывод:" << endl;
     for (int i = 0; i < supplies.size(); i++) {
