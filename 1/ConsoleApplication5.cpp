@@ -55,6 +55,7 @@ public:
          << " |";
   }
 };
+
 class Pencil : public OfficeSupplies {
 private:
   int density;
@@ -69,6 +70,7 @@ public:
          << " | Цвет: " << colorMap[pencil_color] << endl;
   }
 };
+
 class Pen : public OfficeSupplies {
 private:
   penType type;
@@ -83,6 +85,7 @@ public:
          << " | Диаметр стержня: " << diam << "мм " << endl;
   }
 };
+
 class Paper : public OfficeSupplies {
 private:
   int density;
@@ -111,10 +114,13 @@ int main() {
   string command;
   string filename;
   ifstream file;
+
   cout << "1 - консольный режим, 2 - режим файла" << endl;
   int option;
+
   cin >> option;
   getline(cin, console_trash);
+
   switch (option) {
   case 1:
     while (true) {
@@ -126,6 +132,7 @@ int main() {
       processCommand(command);
     }
     break;
+
   case 2:
     cout << "Введите название файла (/ConsoleApplication5/command_input.txt - "
             "по умолчанию)";
@@ -145,12 +152,15 @@ int main() {
       processCommand(command);
     }
     break;
+
   default:
     cout << "Нет такого варианта." << endl;
   }
+
   for (auto ptr : supplies) {
     delete ptr;
   }
+
   return 0;
 }
 
@@ -159,10 +169,13 @@ color stringToColor(string str) {
     if (pair.second == str) {
       return pair.first;
     }
+
   return none;
 }
+
 void processCommand(string command) {
   vector<string> parameters;
+
   size_t start = 0;
   size_t end = command.find(' ');
 
@@ -171,49 +184,64 @@ void processCommand(string command) {
     start = end + 1;
     end = command.find(' ', start);
   }
+
   parameters.push_back(command.substr(start));
+
   for (int j = 0; j < parameters.size(); j++)
     for (int i = 0; i < size(parameters[j]); i++) {
       parameters[j][i] = tolower(parameters[j][i]);
     }
+
   switch (commandMap[parameters[0]]) {
-    // add
+  // add
   case 1: {
     if (parameters.size() < 3) {
       cout << "Не указаны параметры" << endl;
       return;
     }
+
     float param_price;
+
     try {
       param_price = stof(parameters[2]);
     } catch (invalid_argument &) {
       cout << "Некорректная цена: " << parameters[2] << endl;
       return;
     }
+
     if (parameters[1] == "pencil") {
       if (parameters.size() != 6) {
         cout << "Неверное количество параметров" << endl;
         return;
       }
+
       int param_density;
+
       try {
         param_density = stoi(parameters[4]);
       } catch (invalid_argument &) {
         cout << "Некорректная плотность: " << parameters[4] << endl;
         return;
       }
-      color param_color = (stringToColor(parameters[5]));
+
+      color param_color = stringToColor(parameters[5]);
+
       Pencil *sup =
           new Pencil(param_price, parameters[3], param_density, param_color);
+
       supplies.push_back(sup);
+
       cout << "Добавлен ";
       sup->displayInfo();
+
     } else if (parameters[1] == "pen") {
       if (parameters.size() != 6) {
         cout << "Неверное количество параметров" << endl;
         return;
       }
+
       penType param_type;
+
       if (parameters[4] == "ballpoint")
         param_type = ball;
       else if (parameters[4] == "gel")
@@ -222,22 +250,30 @@ void processCommand(string command) {
         cout << "Некорректный тип ручки: " << parameters[4] << endl;
         return;
       }
+
       float param_diam;
+
       try {
         param_diam = stof(parameters[5]);
       } catch (invalid_argument &) {
         cout << "Некорректный диаметр: " << parameters[5] << endl;
         return;
       }
+
       Pen *sup = new Pen(param_price, parameters[3], param_type, param_diam);
+
       supplies.push_back(sup);
+
       cout << "Добавлен ";
+
       sup->displayInfo();
+
     } else if (parameters[1] == "paper") {
       if (parameters.size() != 7) {
         cout << "Неверное количество параметров" << endl;
         return;
       }
+
       int param_density, param_width, param_length;
 
       try {
@@ -248,64 +284,85 @@ void processCommand(string command) {
         cout << "Некорректные параметры бумаги." << endl;
         return;
       }
+
       Paper *sup = new Paper(param_price, parameters[3], param_density,
                              param_width, param_length);
+
       supplies.push_back(sup);
+
       cout << "Добавлен ";
+
       sup->displayInfo();
+
     } else {
       cout << "Неправильно указан класс предмета" << endl;
       return;
     }
+
     break;
   }
-    // rem
+
+  // rem
   case 2: {
     int id;
+
     try {
       id = stoi(parameters[1]);
     } catch (invalid_argument &) {
       cout << "Некорректный ID: " << parameters[1] << endl;
       return;
     }
+
     if (id >= supplies.size()) {
       cout << "Попытка удаления несуществующего предмета" << endl;
       break;
     }
+
     cout << "Предмет под номером " << id << " будет удалён." << endl
          << "Удаление ";
+
     supplies[id]->displayInfo();
+
     supplies.erase(supplies.begin() + id);
+
     break;
   }
-    // print
+
+  // print
   case 3: {
     cout << "Вывод:" << endl;
+
     for (int i = 0; i < supplies.size(); i++) {
       supplies[i]->displayInfo();
     }
+
     cout << endl;
+
     break;
   }
-    // help
+
+  // help
   case 4: {
     cout << "Редактор списка канцелярских принадлежностей." << endl
-         << "Используются 4 комманды: add (Добавить), rem (Удалить), print "
+         << "Используются "
+         << "4 комманды: add (Добавить), rem (Удалить), print "
             "(Вывести), exit (Выход)."
          << endl
-         << "Имеется 3 типа принадлежностей: Pencil (Карандаш), Pen (Ручка), "
-            "Paper (Бумага)."
-         << endl
+         << "Имеется "
+         << "3 типа принадлежностей: Pencil (Карандаш), Pen (Ручка), "
+         << "Paper (Бумага)." << endl
          << "Синтаксис комманд:" << endl
          << "add Pencil <Цена> <Владелец> <Плотность грифеля> <Цвет>" << endl
          << "add Pen <Цена> <Владелец> <Тип ручки> <Диаметр стержня>" << endl
          << "add Paper <Цена> <Владелец> <Плотность> <Ширина> <Высота>" << endl
          << "rem <Индекс элемента>" << endl
          << "print" << endl;
+
     break;
   }
+
   default: {
     cout << "Неправильная комманда." << endl;
   }
-  }
-}
+  } // End of switch statement.
+} // End of processCommand function.
