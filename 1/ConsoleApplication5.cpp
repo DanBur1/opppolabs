@@ -60,8 +60,8 @@ class OfficeSupplies {
 
 class Pencil : public OfficeSupplies {
 private:
-  int density;
-  color pencil_color;
+   int density;
+   color pencil_color;
 
 public:
   Pencil(float p, const string &phone, int d, color pc)
