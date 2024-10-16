@@ -1,10 +1,10 @@
 /*COPYRIGHT YEAR NO COPYRIGHT*/
 class OfficeSupplies {
- private:
+private:
   float price;
   string phone_number;
 
- public:
+public:
   OfficeSupplies() : price(0), phone_number("") {}
 
   OfficeSupplies(float p, const string &phone)
