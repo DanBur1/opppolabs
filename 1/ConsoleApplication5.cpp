@@ -41,8 +41,7 @@ map<color, string> colorMap = {
     {brown, "brown"}, {gray, "gray"},     {none, "non-colored"}};
 map<penType, string> typeMap = {{ball, "ballpoint"}, {gel, "gel"}};
 
-class OfficeSupplies
-{
+class OfficeSupplies{
 private:
   float price;
   string phone_number;
@@ -59,8 +58,7 @@ public:
   }
 };
 
-class Pencil : public OfficeSupplies
-{
+class Pencil : public OfficeSupplies{
 private:
   int density;
   color pencil_color;
@@ -75,8 +73,7 @@ public:
   }
 };
 
-class Pen : public OfficeSupplies
-{
+class Pen : public OfficeSupplies{
 private:
   penType type;
   float diam;
@@ -91,8 +88,7 @@ public:
   }
 };
 
-class Paper : public OfficeSupplies
-{
+class Paper : public OfficeSupplies{
 private:
   int density;
   int width;
