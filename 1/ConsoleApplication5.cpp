@@ -41,21 +41,21 @@ map<color, string> colorMap = {
     {brown, "brown"}, {gray, "gray"},     {none, "non-colored"}};
 map<penType, string> typeMap = {{ball, "ballpoint"}, {gel, "gel"}};
 
-class OfficeSupplies{
-private:
-  float price;
-  string phone_number;
+class OfficeSupplies {
+  private:
+    float price;
+    string phone_number;
 
-public:
-  OfficeSupplies() : price(0), phone_number("") {}
+  public:
+    OfficeSupplies() : price(0), phone_number("") {}
 
-  OfficeSupplies(float p, const string &phone)
-      : price(p), phone_number(phone) {}
+    OfficeSupplies(float p, const string &phone)
+        : price(p), phone_number(phone) {}
 
-  virtual void displayInfo() const {
-    cout << "Цена: " << price << "руб. | Номер владельца: " << phone_number
-         << " |";
-  }
+    virtual void displayInfo() const {
+      cout << "Цена: " << price << "руб. | Номер владельца: " << phone_number
+           << " |";
+    }
 };
 
 class Pencil : public OfficeSupplies{
