@@ -1,5 +1,5 @@
 ﻿/*COPYRIGHT YEAR NO COPYRIGHT*/
-class OfficeSupplies {
+class OfficeSupplies{
  private:
   float price;
   string phone_number;
