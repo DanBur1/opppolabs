@@ -45,6 +45,70 @@ class OfficeSupplies;
 
 vector<OfficeSupplies *> supplies;
 
+class OfficeSupplies {
+private:
+  float price;
+  string phone_number;
+
+public:
+  OfficeSupplies() : price(0), phone_number("") {}
+
+  OfficeSupplies(float p, const string &phone)
+      : price(p), phone_number(phone) {}
+
+  virtual void displayInfo() const {
+    cout << "Цена: " << price << "руб. | Номер владельца: " << phone_number
+         << " |";
+  }
+};
+
+class Pencil : public OfficeSupplies {
+private:
+  int density;
+  color pencil_color;
+
+public:
+  Pencil(float p, const string &phone, int d, color pc)
+      : OfficeSupplies(p, phone), density(d), pencil_color(pc) {}
+  void displayInfo() const override {
+    OfficeSupplies::displayInfo();
+    cout << " Карандаш | Плотность грифеля: " << density
+         << " | Цвет: " << colorMap[pencil_color] << endl;
+  }
+};
+
+class Pen : public OfficeSupplies {
+private:
+  penType type;
+  float diam;
+
+public:
+  Pen(float p, const string &phone, const penType &t, float d)
+      : OfficeSupplies(p, phone), type(t), diam(d) {}
+  void displayInfo() const override {
+    OfficeSupplies::displayInfo();
+    cout << " Ручка | Тип ручки: " << typeMap[type]
+         << " | Диаметр стержня: " << diam << "мм " << endl;
+  }
+};
+
+class Paper : public OfficeSupplies {
+private:
+  int density;
+  int width;
+  int length;
+
+public:
+  Paper(float p, const string &phone, int d, int w, int h)
+      : OfficeSupplies(p, phone), density(d), width(w), length(h) {}
+
+  void displayInfo() const override {
+    OfficeSupplies::displayInfo();
+    cout << " Бумага | Плотность: " << density << "г/м2 | Ширина : " << width
+         << "мм | Длина : " << length << "мм" << endl;
+  }
+};
+
 color stringToColor(string str);
 void processCommand(string command);
 
@@ -306,67 +370,3 @@ void processCommand(string command) {
   }
   }
 }
-
-class OfficeSupplies {
-private:
-  float price;
-  string phone_number;
-
-public:
-  OfficeSupplies() : price(0), phone_number("") {}
-
-  OfficeSupplies(float p, const string &phone)
-      : price(p), phone_number(phone) {}
-
-  virtual void displayInfo() const {
-    cout << "Цена: " << price << "руб. | Номер владельца: " << phone_number
-         << " |";
-  }
-};
-
-class Pencil : public OfficeSupplies {
-private:
-  int density;
-  color pencil_color;
-
-public:
-  Pencil(float p, const string &phone, int d, color pc)
-      : OfficeSupplies(p, phone), density(d), pencil_color(pc) {}
-  void displayInfo() const override {
-    OfficeSupplies::displayInfo();
-    cout << " Карандаш | Плотность грифеля: " << density
-         << " | Цвет: " << colorMap[pencil_color] << endl;
-  }
-};
-
-class Pen : public OfficeSupplies {
-private:
-  penType type;
-  float diam;
-
-public:
-  Pen(float p, const string &phone, const penType &t, float d)
-      : OfficeSupplies(p, phone), type(t), diam(d) {}
-  void displayInfo() const override {
-    OfficeSupplies::displayInfo();
-    cout << " Ручка | Тип ручки: " << typeMap[type]
-         << " | Диаметр стержня: " << diam << "мм " << endl;
-  }
-};
-
-class Paper : public OfficeSupplies {
-private:
-  int density;
-  int width;
-  int length;
-
-public:
-  Paper(float p, const string &phone, int d, int w, int h)
-      : OfficeSupplies(p, phone), density(d), width(w), length(h) {}
-
-  void displayInfo() const override {
-    OfficeSupplies::displayInfo();
-    cout << " Бумага | Плотность: " << density << "г/м2 | Ширина : " << width
-         << "мм | Длина : " << length << "мм" << endl;
-  }
-};
