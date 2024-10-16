@@ -1,4 +1,4 @@
-/*COPYRIGHT YEAR NO COPYRIGHT*/
+ï»¿/*COPYRIGHT YEAR NO COPYRIGHT*/
 class OfficeSupplies {
   private:
      float price;
@@ -11,7 +11,7 @@ class OfficeSupplies {
          : price(p), phone_number(phone) {}
 
      virtual void displayInfo() const {
-      cout << "Öåíà: " << price << "ðóá. | Íîìåð âëàäåëüöà: " << phone_number
+      cout << "Ð¦ÐµÐ½Ð°: " << price << "Ñ€ÑƒÐ±. | ÐÐ¾Ð¼ÐµÑ€ Ð²Ð»Ð°Ð´ÐµÐ»ÑŒÑ†Ð°: " << phone_number
             << " |";
      }
-  };
+ };
