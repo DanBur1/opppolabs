@@ -109,8 +109,8 @@ public:
   }
 };
 
-color stringToColor(string str);
-void processCommand(string command);
+color stringToColor(const string &str);
+void processCommand(const string &command);
 
 int main() {
   setlocale(LC_ALL, "RU");
@@ -168,7 +168,7 @@ int main() {
   return 0;
 }
 
-color stringToColor(string str) {
+color stringToColor(const string &str) {
   for (const auto &pair : colorMap)
     if (pair.second == str) {
       return pair.first;
@@ -177,7 +177,7 @@ color stringToColor(string str) {
   return none;
 }
 
-void processCommand(string command) {
+void processCommand(const string &command) {
   vector<string> parameters;
 
   size_t start = 0;
