@@ -1,0 +1,6 @@
+C:\Users\PAK\prog\Test\x64\Debug\gtest.pdb
+C:\Users\PAK\prog\Test\x64\Debug\gtest_main.pdb
+C:\Users\PAK\prog\Test\Test\x64\Debug\Test.vcxproj.Up2Date
+C:\Users\PAK\prog\opppolabspregit\1\Test\x64\Debug\gtest.pdb
+C:\Users\PAK\prog\opppolabspregit\1\Test\x64\Debug\gtest_main.pdb
+C:\Users\PAK\prog\opppolabspregit\1\Test\Test\x64\Debug\Test.vcxproj.Up2Date
